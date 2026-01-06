@@ -1,0 +1,21 @@
+{
+  "short_name": "EcoShield",
+  "name": "EcoShield: UV & Ozone Protection",
+  "description": "EcoShield protects you from harmful UV rays and the scorching heat of the sun, while also helping to preserve the Earth and support a healthier society.",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/icon-512x512.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#00BFFF",
+  "background_color": "#ffffff"
+}

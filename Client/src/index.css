@@ -1,0 +1,285 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 195 100% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 142 100% 50%; /* Neon Green #39FF14 */
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 180 100% 50%; /* Electric Blue #00FFFF */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 100% 50%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 142 100% 50%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 142 100% 50%;
+  }
+
+  .dark {
+    --background: 0 0% 0%; /* Pure Black #000000 */
+    --foreground: 210 40% 98%;
+
+    --card: 0 0% 10%; /* Dark Grey #1A1A1A */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 142 100% 50%; /* Neon Green #39FF14 */
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 180 100% 50%; /* Electric Blue #00FFFF */
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 0 0% 15%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 142 100% 50%;
+    
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 142 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 142 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-poppins;
+  }
+}
+
+@layer components {
+  .eco-card {
+    @apply rounded-lg bg-white dark:bg-card shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden;
+  }
+  .eco-gradient {
+    @apply bg-gradient-to-br from-primary to-secondary text-white;
+  }
+  .timeline-item {
+    @apply relative pl-10 pb-10 border-l border-primary dark:border-opacity-50;
+  }
+  .timeline-dot {
+    @apply absolute left-0 -translate-x-1/2 w-5 h-5 rounded-full bg-primary dark:bg-opacity-80;
+  }
+  .hover-scale {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+  .story-link {
+    @apply relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left;
+  }
+  
+  /* New footer animations */
+  .footer-link {
+    @apply relative overflow-hidden inline-block;
+  }
+  
+  .footer-link:after {
+    @apply content-[''] absolute w-full h-0.5 bg-primary left-0 bottom-0 transform -translate-x-full transition-transform duration-300;
+  }
+  
+  .footer-link:hover:after {
+    @apply translate-x-0;
+  }
+  
+  .glow-on-hover {
+    @apply relative overflow-hidden;
+  }
+  
+  .glow-on-hover:before {
+    @apply content-[''] absolute top-0 left-0 w-full h-full bg-gradient-to-r from-primary/20 to-secondary/20 opacity-0 transition-opacity duration-300;
+  }
+  
+  .glow-on-hover:hover:before {
+    @apply opacity-100;
+  }
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* New footer animations */
+@keyframes orbit {
+  from {
+    transform: rotate(0deg) translateX(70px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(70px) rotate(-360deg);
+  }
+}
+
+.animate-orbit {
+  animation: orbit 20s linear infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.8);
+  }
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+/* ... keep all your existing CSS above this line ... */
+
+@layer components {
+  .aurora-bg {
+    @apply relative;
+  }
+
+  .aurora-bg::before,
+  .aurora-bg::after {
+    @apply content-[''] absolute -z-10 h-[400px] w-[600px] rounded-full;
+    filter: blur(100px);
+  }
+
+  .aurora-bg::before {
+    @apply -top-80 -left-80 bg-primary/20 animate-aurora-1;
+  }
+
+  .aurora-bg::after {
+    @apply -bottom-80 -right-80 bg-secondary/20 animate-aurora-2;
+  }
+}
+
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(40px, 60px); }
+  50% { transform: translate(-20px, -30px); }
+  75% { transform: translate(30px, -50px); }
+}
+
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0, 0); }
+  25% { transform: translate(-40px, -60px); }
+  50% { transform: translate(20px, 30px); }
+  75% { transform: translate(-30px, 50px); }
+}
+
+/* Add this to your src/index.css or globals.css */
+:root {
+  /* Define base chart colors (adjust HSL values to match your theme) */
+  --chart-1: 43 94% 55%;   /* Example: Yellow/Orange for UV */
+  --chart-2: 200 90% 50%; /* Example: Blue for AQI */
+  --chart-3: 0 84% 60%;   /* Example: Red for Temp */
+  --chart-4: 140 70% 45%; /* Example: Green (if needed) */
+  --chart-5: 270 75% 55%; /* Example: Purple (if needed) */
+
+  /* Create specific color variables based on the base chart colors */
+  --color-uv: hsl(var(--chart-1));
+  --color-aqi: hsl(var(--chart-2));
+  --color-temp: hsl(var(--chart-3));
+}
+
+/* Define colors for dark mode if you have one */
+.dark {
+  --chart-1: 43 94% 65%;   /* Lighter orange for dark mode */
+  --chart-2: 200 90% 60%; /* Lighter blue for dark mode */
+  --chart-3: 0 84% 70%;   /* Lighter red for dark mode */
+  /* ... define other chart colors for dark mode ... */
+
+  /* Update specific color variables */
+  --color-uv: hsl(var(--chart-1));
+  --color-aqi: hsl(var(--chart-2));
+  --color-temp: hsl(var(--chart-3));
+}
+
+@keyframes scan {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(400px); opacity: 0; }
+}
+.animate-scan {
+  animation: scan 3s linear infinite;
+}
